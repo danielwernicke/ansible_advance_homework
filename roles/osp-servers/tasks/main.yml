@@ -38,8 +38,6 @@
   register: instancefloatingip
   with_dict: "{{osp_servers}}"
 
-- pause:
-   
 - name: Show "{{ instanceip }}" public IP
   debug: var=instancefloatingip.floating_ip.floating_ip_address
 - name: Wait for "{{ instance_name }}" to be available
