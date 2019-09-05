@@ -25,6 +25,11 @@
     - "{{osp_servers}}"
     - meta
 
+- debug: var=item
+  with_dict: "{{osp_servers}}"
+
+- pause:
+
 - name: Add floating IP to Servers
   os_floating_ip:
     cloud: ospcloud
