@@ -25,7 +25,7 @@
     - "{{osp_servers}}"
     - meta
 
-- debug: var=item.name
+- debug: var=item.value.name
   with_dict: "{{osp_servers}}"
 
 - pause:
