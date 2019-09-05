@@ -25,10 +25,6 @@
     - "{{osp_servers}}"
     - meta
 
-- debug: var=item.value.name
-  with_dict: "{{osp_servers}}"
-
-- pause:
 
 - name: Add floating IP to Servers
   os_floating_ip:
@@ -40,7 +36,9 @@
     wait: true
     timeout: 180
     register: instancefloatingip
-    with_dict: "{{osp_servers}}"
+  with_dict: "{{osp_servers}}"
+
+- pause:
    
 - name: Show "{{ instanceip }}" public IP
   debug: var=instancefloatingip.floating_ip.floating_ip_address
