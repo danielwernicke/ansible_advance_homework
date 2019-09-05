@@ -39,12 +39,13 @@
   with_dict: "{{osp_servers}}"
 
 - name: Show "{{ instanceip }}" public IP
-  debug: var=instancefloatingip.floating_ip.floating_ip_address
+  debug: var=instancefloatingip
 - name: Wait for "{{ instance_name }}" to be available
   wait_for:
-    host: "{{ instancefloatingip.floating_ip.floating_ip_address }}"
+    host: "{{ item.floating_ip.floating_ip_address }}"
     port: 22
     search_regex: OpenSSH
     timeout: 600
   delegate_to: "{{ inventory_hostname }}"
+  with_items: "{{ instancefloatingip.results }}"
 
