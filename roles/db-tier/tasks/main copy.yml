@@ -1,5 +1,4 @@
----
-# tasks file for db-tier
+# file: postgresql/tasks/main.yml
 
 - include_vars: "{{ item }}"
   with_first_found:
