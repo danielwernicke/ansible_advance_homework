@@ -1,4 +1,4 @@
-- hosts: tag_instance_filter_three-tier-app-dwernicke*
+- hosts: tag_instance_filter_three-tier-app-dwernicke_integraltech_com_au
   gather_facts: false
   tasks:
   - name: Check the instances status
