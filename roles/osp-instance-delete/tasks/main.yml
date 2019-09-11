@@ -8,13 +8,13 @@
   tags:
     - cleanup
 
-- name: Print records  
-  debug:
-    var: item.name
-  with_items: 
-    - "{{ result.ansible_facts.openstack_servers }}"
-  tags:
-    - cleanup
+#- name: Print records  
+#  debug:
+#    var: item.name
+#  with_items: 
+#    - "{{ result.ansible_facts.openstack_servers }}"
+#  tags:
+#    - cleanup
 
 - name: Delete instances
   os_server:
