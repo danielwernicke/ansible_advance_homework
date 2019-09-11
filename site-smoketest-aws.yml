@@ -4,7 +4,7 @@
   - name: Use Uri module for wrting smoke test.
     uri:
       #url: http://frontend1.{{ GUID }}.example.opentlc.com/ansible
-      url: http://localhost/ansible
+      url: http://{{ inventory_hostname }}/ansible
       return_content: yes
     register: webpage
 
