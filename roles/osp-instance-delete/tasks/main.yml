@@ -3,27 +3,28 @@
 - name: Fetch Instance Info
   os_server_facts:
     cloud: ospcloud
-  register: openstack_servers
+    region_name: RegionOne
+  register: result
   tags:
     - cleanup
 
 - name: Print records  
   debug:
-    var: item.1.name
+    var: item.name
   with_items: 
-    - "{{ openstack_servers }}"
+    - "{{ result.ansible_facts.openstack_servers }}"
   tags:
     - cleanup
 
 - name: Delete instances
   os_server:
     cloud: ospcloud
-    name: "{{ item.1.name }}"
+    name: "{{ item.name }}"
     state: absent
     image: rhel-guest
     flavor: m2.small
     delete_fip: true
   with_items: 
-    - "{{ openstack_servers }}"
+    - "{{ result.ansible_facts.openstack_servers }}"
   tags:
     - cleanup
